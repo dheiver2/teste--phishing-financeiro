@@ -1,214 +1,135 @@
-# Instagram Carousel Generator
+# Simulação de Phishing Financeiro — Mercado Pago
 
-> Create stunning Instagram carousels with AI assistance. Design beautiful multi-slide posts with ease using Fabric.js and OpenRouter AI.
+> Página de demonstração educacional que replica as técnicas visuais e comportamentais utilizadas em ataques de phishing financeiro, com aparência do Mercado Pago.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Node](https://img.shields.io/badge/node-%3E%3D18-green.svg)
-![React](https://img.shields.io/badge/react-19-61DAFB.svg)
+![Finalidade](https://img.shields.io/badge/finalidade-educacional-orange.svg)
+![Tecnologia](https://img.shields.io/badge/tech-HTML%20%2F%20CSS%20%2F%20JS-blue.svg)
+![Dependências](https://img.shields.io/badge/depend%C3%AAncias-nenhuma-green.svg)
 
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Development](#development)
-- [Building](#building)
-- [Project Structure](#project-structure)
-- [Usage](#usage)
-- [API Integration](#api-integration)
-- [Environment Variables](#environment-variables)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Performance](#performance)
-- [Browser Support](#browser-support)
-- [Contributing](#contributing)
-- [License](#license)
+> **Aviso:** Este material é estritamente para fins de conscientização em segurança digital, treinamento de equipes e pesquisa. Nunca utilize para enganar pessoas reais ou coletar dados sem consentimento.
 
 ---
 
-## Features
+## Objetivo
 
-- **Canvas Editor** — Professional canvas for designing carousel slides
-- **AI-Powered Generation** — Create carousel designs with AI suggestions via OpenRouter
-- **Fabric.js Integration** — Advanced drawing and manipulation tools
-- **Export Options** — Export to PNG, JPG, PDF, and GIF formats
-- **Template Library** — Pre-designed templates for quick start
-- **Responsive Design** — Works on desktop and tablet
-- **Real-time Preview** — See changes instantly
+Demonstrar na prática como ataques de phishing financeiro funcionam, incluindo:
 
-## Tech Stack
+- Clonagem visual fiel de marcas conhecidas (Mercado Pago / Visa)
+- Coleta de dados pessoais sensíveis em formulários convincentes
+- Simulação de análise de crédito para gerar senso de urgência e legitimidade
+- Cobrança fraudulenta de "taxa de envio" via PIX após falsa aprovação
 
-| Layer | Technology |
+---
+
+## Fluxo do ataque simulado
+
+```
+Vítima acessa o link
+        ↓
+Landing page clonada do Mercado Pago
+        ↓
+Formulário coleta: nome, CPF, data de nascimento,
+e-mail, celular, CEP, endereço e renda mensal
+        ↓
+Contagem regressiva fake ("Analisando seu pedido...")
+        ↓
+Modal de "aprovação" com limite de R$ 7.000
+        ↓
+Cobrança de R$ 29,90 via PIX ("taxa de envio do cartão")
+        ↓
+QR Code e código PIX exibidos com timer de 15 minutos
+```
+
+---
+
+## Técnicas de engenharia social simuladas
+
+| Técnica | Implementação na página |
+|---------|------------------------|
+| Identidade visual clonada | Logo, paleta de cores e tipografia do Mercado Pago |
+| Prova social | "+50 mi clientes", badges de segurança, selos Visa Gold |
+| Urgência | Timer de 15 min no PIX, animação de "análise em tempo real" |
+| Legitimidade técnica | Chip EMV, animação 3D do cartão, QR Code realista |
+| Aprovação garantida | 100% de aprovação independente dos dados digitados |
+| Ancoragem de valor | Exibe limite de R$ 7.000 antes de pedir R$ 29,90 |
+| Campo sensível | CPF, data de nascimento, celular e endereço completo |
+
+---
+
+## Estrutura da página
+
+| Seção | Descrição |
 |-------|-----------|
-| Frontend | React 19 + TypeScript |
-| Styling | Tailwind CSS 4 |
-| State | Zustand |
-| Canvas | Fabric.js 5 |
-| Export | html2canvas |
-| AI | OpenRouter API |
-| Build | Vite 5 |
-
-## Prerequisites
-
-- Node.js 18+ or npm 9+
-- OpenRouter API key (for AI features)
-
-## Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Create environment file
-cp .env.example .env.local
-```
-
-## Configuration
-
-Edit `.env.local` with your OpenRouter API key:
-
-```env
-VITE_OPENROUTER_API_KEY=your_api_key_here
-```
-
-## Development
-
-```bash
-# Start development server
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-## Building
-
-```bash
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint
-```
-
-## Project Structure
-
-```
-src/
-├── components/          # React components
-│   ├── common/          # Shared components (Button, Input, etc.)
-│   ├── canvas/          # Canvas-related components
-│   ├── toolbar/         # Toolbar components
-│   ├── sidebar/         # Sidebar components
-│   ├── editor/          # Editor-specific components
-│   └── export/          # Export dialog components
-├── pages/               # Page components
-│   ├── editor/          # Main editor page
-│   ├── gallery/         # Carousel gallery
-│   └── templates/       # Templates page
-├── hooks/               # Custom React hooks
-├── stores/              # Zustand stores
-│   ├── carouselStore.ts
-│   └── uiStore.ts
-├── services/            # API services
-│   ├── api/             # OpenRouter API
-│   ├── canvas/          # Canvas operations
-│   └── export/          # Export functionality
-├── types/               # TypeScript type definitions
-├── utils/               # Utility functions
-│   ├── helpers.ts
-│   └── validators.ts
-├── config/              # Configuration files
-│   ├── openrouter.ts
-│   └── canvas.ts
-├── constants/           # Application constants
-└── styles/              # Global styles
-```
-
-## Usage
-
-1. **Create a Carousel** — Start from the editor page
-2. **Add Slides** — Click "Add Slide" to add new carousel slides
-3. **Design Slides**:
-   - Add text with custom fonts and colors
-   - Insert images and shapes
-   - Arrange elements on the canvas
-4. **Use AI Generation** — Generate design suggestions with OpenRouter
-5. **Export** — Download your carousel as PNG, JPG, PDF, or GIF
-
-## API Integration
-
-### OpenRouter
-
-The app uses OpenRouter for AI-powered design generation. Available models:
-
-| Model | Provider |
-|-------|---------|
-| GPT-4o | OpenAI |
-| GPT-3.5 Turbo | OpenAI |
-| Claude 3 Opus | Anthropic |
-| Claude 3 Sonnet | Anthropic |
-| Llama 2 70B | Meta |
-| Auto | Cheapest available |
-
-## Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `VITE_OPENROUTER_API_KEY` | OpenRouter API key | — |
-| `VITE_CANVAS_WIDTH` | Default canvas width | `1080` |
-| `VITE_CANVAS_HEIGHT` | Default canvas height | `1350` |
-| `VITE_ENABLE_AI_GENERATION` | Enable AI features | `true` |
-| `VITE_ENABLE_EXPORT` | Enable export features | `true` |
-
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+S` / `Cmd+S` | Save carousel |
-| `Ctrl+E` / `Cmd+E` | Export carousel |
-| `Delete` | Delete selected element |
-| `Ctrl+D` / `Cmd+D` | Duplicate element |
-| `Ctrl+Z` / `Cmd+Z` | Undo |
-| `Ctrl+Y` / `Cmd+Y` | Redo |
-
-## Performance
-
-- Code splitting with Vite
-- Lazy loading of components
-- Memoization of React components
-- Debounced canvas operations
-- Efficient Zustand state management
-
-## Browser Support
-
-| Browser | Minimum Version |
-|---------|----------------|
-| Chrome / Edge | 90+ |
-| Firefox | 88+ |
-| Safari | 14+ |
-
-## Contributing
-
-Contributions are welcome! Please ensure:
-
-- TypeScript strict mode compliance
-- All types are properly defined
-- Code follows the existing patterns
-- Tests are included for new features
-
-## License
-
-[MIT](LICENSE)
+| Header sticky | Logo falso + nav + CTA "Peça seu cartão" |
+| Hero | Cartão 3D animado + estatísticas de confiança fabricadas |
+| Benefícios | Grid com 6 cards replicando benefícios reais do produto |
+| Como funciona | 3 passos para minimizar fricção e transmitir simplicidade |
+| Formulário | Coleta de dados em 4 etapas com máscaras de CPF, celular e CEP |
+| Modal de aprovação | Countdown + confetti + limite animado de R$ 7.000 |
+| Tela PIX | QR fake + código copia-e-cola + timer regressivo |
+| FAQ | Respostas que aumentam credibilidade e reduzem dúvidas |
+| Footer | Textos legais copiados da página real |
 
 ---
 
-For issues, questions, or suggestions, please [open an issue](../../issues) in the repository.
+## Dados coletados pelo formulário
+
+- Nome completo
+- CPF (com máscara automática)
+- Data de nascimento
+- E-mail
+- Celular
+- CEP, endereço, cidade e estado
+- Faixa de renda mensal
+
+---
+
+## Tecnologia
+
+Arquivo único, sem dependências externas além de Google Fonts:
+
+- **HTML5** semântico
+- **CSS3** — variáveis, grid, animações, `@keyframes`, responsivo completo
+- **JavaScript** vanilla — máscaras de input, modal, countdown, confetti, timer PIX, clipboard API
+
+---
+
+## Como usar (ambiente controlado)
+
+```bash
+# Basta abrir o arquivo no navegador
+open cartao-mercadopago-v2.html
+```
+
+Não requer servidor, build ou instalação.
+
+---
+
+## Sinais de alerta que a página simula esconder
+
+Para fins didáticos, estes são os sinais que uma vítima real deveria observar:
+
+- URL não é `mercadopago.com.br`
+- Nenhuma validação real dos dados inseridos
+- Aprovação de crédito instantânea e universal (irreal)
+- "Taxa de envio" cobrada antes de qualquer entrega — prática inexistente no Mercado Pago legítimo
+- QR Code não é funcional e o código PIX é estático/fixo
+- Dados do formulário não são enviados a nenhum servidor seguro
+
+---
+
+## Aviso legal
+
+Este repositório é destinado exclusivamente a:
+
+- Treinamentos de conscientização em segurança da informação
+- Simulações de phishing autorizadas (pentest social)
+- Pesquisa acadêmica e educação em cibersegurança
+
+O uso para fraude, captação indevida de dados ou qualquer atividade ilegal é expressamente proibido e sujeito às penalidades da **Lei nº 12.737/2012 (Lei Carolina Dieckmann)**, **LGPD** e demais legislações aplicáveis.
+
+---
+
+## Licença
+
+MIT — para uso educacional.
