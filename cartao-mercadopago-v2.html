@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" />
+<meta name="theme-color" content="#00A6E2" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<title>Peça seu Cartão de Crédito Mercado Pago | Sem anuidade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Paleta Mercado Pago oficial */
+    --mp-blue:#00A6E2;        /* Azul claro principal */
+    --mp-blue-dark:#009EE3;   /* Azul botões */
+    --mp-blue-deep:#0073A8;   /* Azul hover/escuro */
+    --mp-yellow:#FFE600;      /* Amarelo ML */
+    --mp-dark:#1A1A1A;        /* Preto cartão */
+    --mp-text:#333333;
+    --mp-text-2:#737373;
+    --mp-text-mute:#999999;
+    --mp-border:#EEEEEE;
+    --mp-bg:#F5F5F5;
+    --mp-success:#00A650;
+    --mp-error:#F23D4F;
+    --mp-purple:#8E5BFF;      /* Acento moderno */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,.12);
+    --radius:8px;
+    --radius-lg:16px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+  body{
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+    color:var(--mp-text);
+    background:#fff;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+  }
+
+  /* Touch feedback nativo */
+  button,a,.income-card,.benefit-card,summary,.step{
+    -webkit-touch-callout:none;
+    user-select:none;
+  }
+  button:active,a.btn-primary:active,.income-card:active{
+    transform:scale(.97);
+    transition:transform .1s;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    background:#fff;
+    border-bottom:1px solid var(--mp-border);
+    position:sticky;top:0;z-index:100;
+    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.95);
+  }
+  .header-wrap{
+    max-width:1200px;margin:0 auto;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    text-decoration:none;
+  }
+  .mp-logo{
+    height:38px;width:auto;
+    display:block;
+  }
+
+  .nav{
+    display:flex;gap:32px;align-items:center;
+  }
+  .nav a{
+    color:var(--mp-text);text-decoration:none;
+    font-size:14px;font-weight:500;
+    transition:color .15s;
+  }
+  .nav a:hover{color:var(--mp-blue)}
+
+  .nav-cta{
+    display:flex;gap:12px;align-items:center;
+  }
+  .btn-ghost{
+    color:var(--mp-blue);background:transparent;
+    border:0;font-size:14px;font-weight:600;
+    cursor:pointer;padding:8px 16px;
+  }
+  .btn-primary{
+    background:var(--mp-blue);color:#fff;
+    border:0;padding:10px 20px;
+    font-size:14px;font-weight:600;
+    border-radius:6px;cursor:pointer;
+    text-decoration:none;display:inline-flex;
+    align-items:center;gap:6px;
+    transition:all .15s;
+  }
+  .btn-primary:hover{
+    background:var(--mp-blue-deep);
+    transform:translateY(-1px);
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    background:linear-gradient(160deg,#D6EFF9 0%,#EEF7FD 55%,#fff 100%);
+    padding:80px 0 100px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-160px;right:-120px;
+    width:560px;height:560px;
+    background:radial-gradient(circle,rgba(0,166,226,.18),transparent 65%);
+    pointer-events:none;
+  }
+  .hero-wrap{
+    max-width:1200px;margin:0 auto;
+    padding:0 24px;
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:48px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#fff;
+    border:1px solid var(--mp-border);
+    color:var(--mp-text);
+    padding:6px 14px;border-radius:100px;
+    font-size:13px;font-weight:600;
+    margin-bottom:24px;
+    box-shadow:var(--shadow-sm);
+  }
+  .hero-badge .dot{
+    width:8px;height:8px;background:var(--mp-success);
+    border-radius:50%;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(0,166,80,.5)}
+    50%{box-shadow:0 0 0 8px rgba(0,166,80,0)}
+  }
+  .hero h1{
+    font-size:48px;line-height:1.08;
+    font-weight:800;letter-spacing:-1.5px;
+    color:var(--mp-text);
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{
+    color:var(--mp-blue);
+  }
+  .hero-sub{
+    font-size:18px;color:var(--mp-text-2);
+    max-width:520px;margin-bottom:32px;
+    line-height:1.6;
+  }
+  .hero-cta-row{
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  }
+  .btn-large{
+    padding:16px 32px;font-size:16px;
+    border-radius:8px;
+    box-shadow:0 4px 14px rgba(0,166,226,.4);
+  }
+  .btn-large:hover{
+    box-shadow:0 6px 20px rgba(0,166,226,.5);
+  }
+  .btn-text{
+    background:transparent;border:0;
+    color:var(--mp-text);font-size:15px;
+    font-weight:600;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+    padding:14px 16px;
+  }
+  .btn-text:hover{color:var(--mp-blue)}
+
+  .hero-trust{
+    display:flex;gap:24px;margin-top:36px;
+    padding-top:28px;
+    border-top:1px solid var(--mp-border);
+  }
+  .trust-item{
+    display:flex;flex-direction:column;
+  }
+  .trust-item .num{
+    font-size:24px;font-weight:800;
+    color:var(--mp-text);letter-spacing:-.5px;
+  }
+  .trust-item .lbl{
+    font-size:12px;color:var(--mp-text-2);
+    margin-top:2px;
+  }
+
+  /* ============ CARTÃO 3D ============ */
+  .card-stage{
+    perspective:2000px;
+    display:flex;justify-content:center;align-items:center;
+    position:relative;
+    min-height:320px;
+  }
+  .card-glow{
+    position:absolute;
+    width:380px;height:240px;
+    background:radial-gradient(ellipse,rgba(0,166,226,.25),transparent 70%);
+    filter:blur(80px);
+    z-index:0;
+    animation:glow-pulse 4s ease-in-out infinite;
+  }
+  @keyframes glow-pulse{
+    0%,100%{opacity:.5;transform:scale(1)}
+    50%{opacity:.8;transform:scale(1.1)}
+  }
+  .credit-card{
+    width:380px;height:240px;
+    border-radius:18px;
+    background:linear-gradient(145deg,#111111 0%,#1a1a1a 100%);
+    position:relative;
+    transform:rotateY(-6deg) rotateX(4deg) translateZ(0);
+    box-shadow:
+      0 40px 80px -20px rgba(0,0,0,.55),
+      0 20px 40px -15px rgba(0,0,0,.3),
+      inset 0 1px 0 rgba(255,255,255,.07);
+    padding:28px;
+    color:#fff;
+    overflow:hidden;
+    z-index:1;
+    animation:float 6s ease-in-out infinite;
+    transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .credit-card:hover{
+    transform:rotateY(-3deg) rotateX(2deg) translateY(-6px);
+  }
+  @keyframes float{
+    0%,100%{transform:rotateY(-6deg) rotateX(4deg) translateY(0)}
+    50%{transform:rotateY(-6deg) rotateX(4deg) translateY(-12px)}
+  }
+
+  /* Holographic shimmer */
+  .credit-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(115deg,
+      transparent 30%,
+      rgba(255,255,255,.04) 45%,
+      rgba(212,175,55,.06) 50%,
+      rgba(255,255,255,.04) 55%,
+      transparent 70%);
+    background-size:200% 100%;
+    animation:shimmer 4s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes shimmer{
+    0%,100%{background-position:200% 0}
+    50%{background-position:-100% 0}
+  }
+
+  /* Padrão geométrico sutil */
+  .credit-card::after{
+    content:"";
+    position:absolute;
+    top:50%;right:-60px;
+    width:300px;height:300px;
+    background:
+      repeating-radial-gradient(circle at center,
+        transparent 0,transparent 30px,
+        rgba(255,255,255,.015) 30px,rgba(255,255,255,.015) 31px);
+    transform:translateY(-50%);
+    pointer-events:none;
+  }
+
+  .card-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    position:relative;z-index:2;
+  }
+
+  /* Chip EMV */
+  .card-chip{
+    position:relative;z-index:2;
+    width:44px;height:34px;
+    background:linear-gradient(135deg,#D4A843 0%,#F0C860 40%,#B8882E 100%);
+    border-radius:6px;
+    margin-top:18px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 2px 4px rgba(0,0,0,.4);
+    overflow:hidden;
+  }
+  .chip-inner{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:28px;height:22px;
+    border:1.5px solid rgba(180,140,40,.7);
+    border-radius:3px;
+  }
+  .chip-inner::before{
+    content:"";
+    position:absolute;
+    top:50%;left:0;right:0;
+    height:1px;background:rgba(180,140,40,.6);
+    transform:translateY(-50%);
+  }
+  .chip-inner::after{
+    content:"";
+    position:absolute;
+    left:50%;top:0;bottom:0;
+    width:1px;background:rgba(180,140,40,.6);
+    transform:translateX(-50%);
+  }
+  .card-mp-logo{
+    display:flex;align-items:center;gap:6px;
+  }
+  .card-mp-icon{
+    width:28px;height:28px;
+    background:var(--mp-blue);
+    border-radius:50%;
+    display:grid;place-items:center;
+    font-weight:800;font-size:14px;color:#fff;
+  }
+  .card-mp-text{
+    font-size:13px;font-weight:700;
+    color:#fff;letter-spacing:-.2px;
+  }
+  .card-contactless{
+    width:24px;height:24px;
+    border:2px solid rgba(255,255,255,.4);
+    border-radius:50%;
+    position:relative;
+  }
+  .card-contactless::before,.card-contactless::after{
+    content:"";position:absolute;
+    border:1.5px solid rgba(255,255,255,.6);
+    border-radius:50%;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+  }
+  .card-contactless::before{width:10px;height:10px}
+  .card-contactless::after{width:18px;height:18px}
+
+  .card-clean-info{
+    position:absolute;
+    bottom:28px;left:28px;right:28px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    z-index:2;
+  }
+  .card-clean-info .title{
+    font-size:9px;font-weight:600;
+    color:rgba(255,255,255,.4);
+    text-transform:uppercase;letter-spacing:1.8px;
+    margin-bottom:4px;
+  }
+  .card-clean-info .name{
+    font-size:15px;font-weight:600;
+    color:#fff;letter-spacing:.3px;
+  }
+  .visa-logo{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:26px;font-weight:900;
+    color:#fff;font-style:italic;
+    letter-spacing:-1.5px;
+    line-height:1;
+  }
+  .visa-logo .gold{
+    background:linear-gradient(135deg,#F4D03F 0%,#E5B934 50%,#C99A1F 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-size:10px;font-style:normal;
+    display:block;text-align:right;
+    font-weight:700;letter-spacing:2px;
+    margin-top:2px;
+    font-family:'Inter',sans-serif;
+  }
+
+
+  /* ============ BENEFÍCIOS ============ */
+  .benefits{
+    padding:80px 0;
+    background:#fff;
+  }
+  .container{
+    max-width:1200px;margin:0 auto;
+    padding:0 24px;
+  }
+  .section-head{
+    text-align:center;margin-bottom:60px;
+  }
+  .section-tag{
+    display:inline-block;
+    color:var(--mp-blue);
+    font-size:13px;font-weight:700;
+    text-transform:uppercase;letter-spacing:1px;
+    margin-bottom:12px;
+  }
+  .section-head h2{
+    font-size:42px;font-weight:800;
+    color:var(--mp-text);letter-spacing:-1.5px;
+    line-height:1.1;
+    max-width:600px;margin:0 auto 16px;
+  }
+  .section-head p{
+    color:var(--mp-text-2);font-size:17px;
+    max-width:560px;margin:0 auto;
+  }
+
+  .benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .benefit-card{
+    padding:36px 28px;
+    border-radius:var(--radius-lg);
+    background:#fff;
+    border:1px solid var(--mp-border);
+    transition:all .25s;
+    position:relative;
+    overflow:hidden;
+  }
+  .benefit-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-lg);
+    border-color:transparent;
+  }
+  .benefit-card.featured{
+    background:linear-gradient(135deg,var(--mp-blue) 0%,var(--mp-blue-deep) 100%);
+    color:#fff;
+    border-color:transparent;
+  }
+  .benefit-card.featured .benefit-text,
+  .benefit-card.featured h3{color:#fff}
+  .benefit-card.featured .benefit-text{opacity:.9}
+
+  .benefit-icon{
+    width:56px;height:56px;border-radius:14px;
+    background:rgba(0,166,226,.1);
+    color:var(--mp-blue);
+    display:grid;place-items:center;
+    margin-bottom:20px;font-size:26px;
+  }
+  .benefit-card.featured .benefit-icon{
+    background:rgba(255,255,255,.2);
+    color:#fff;
+  }
+  .benefit-card h3{
+    font-size:20px;font-weight:700;
+    color:var(--mp-text);
+    margin-bottom:10px;letter-spacing:-.3px;
+  }
+  .benefit-text{
+    color:var(--mp-text-2);
+    font-size:15px;line-height:1.6;
+  }
+  .benefit-tag{
+    display:inline-block;
+    background:rgba(255,255,255,.2);
+    color:#fff;font-size:11px;font-weight:700;
+    padding:4px 10px;border-radius:100px;
+    margin-bottom:16px;letter-spacing:.5px;
+    text-transform:uppercase;
+  }
+
+  /* ============ FORMULÁRIO ============ */
+  .form-section{
+    padding:80px 0;
+    background:linear-gradient(180deg,#F5F5F5 0%,#E5F5FB 100%);
+    position:relative;
+  }
+  .form-grid-wrap{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+
+  .form-card{
+    background:#fff;
+    border-radius:20px;
+    padding:48px;
+    box-shadow:var(--shadow-lg);
+  }
+  .form-card h3{
+    font-size:28px;font-weight:800;
+    color:var(--mp-text);
+    margin-bottom:8px;letter-spacing:-.8px;
+  }
+  .form-card .desc{
+    color:var(--mp-text-2);font-size:15px;
+    margin-bottom:32px;
+  }
+
+  /* Stepper moderno */
+  .stepper{
+    display:flex;
+    margin-bottom:36px;
+    background:#F5F5F5;
+    padding:6px;border-radius:100px;
+    gap:4px;
+  }
+  .step{
+    flex:1;text-align:center;
+    padding:10px 12px;
+    font-size:13px;font-weight:600;
+    color:var(--mp-text-mute);
+    border-radius:100px;
+    transition:all .2s;
+    cursor:default;
+  }
+  .step-full{display:inline}
+  .step-mini{display:none}
+  .step.active{
+    background:#fff;color:var(--mp-blue);
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
+  .step.done{color:var(--mp-success)}
+
+  .form-group{margin-bottom:24px}
+  .form-group-title{
+    font-size:13px;font-weight:700;
+    color:var(--mp-text-mute);
+    text-transform:uppercase;letter-spacing:1px;
+    margin-bottom:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .form-group-title::after{
+    content:"";flex:1;height:1px;
+    background:var(--mp-border);
+  }
+
+  .form-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  }
+  .form-grid .full{grid-column:1/-1}
+
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{
+    font-size:13px;color:var(--mp-text);
+    font-weight:600;
+  }
+  .field label .req{color:var(--mp-error);margin-left:2px}
+  .field input,.field select{
+    padding:14px 16px;
+    border:1.5px solid var(--mp-border);
+    border-radius:8px;
+    font-size:14px;font-family:inherit;
+    background:#fff;color:var(--mp-text);
+    transition:all .15s;
+  }
+  .field input:focus,.field select:focus{
+    outline:0;
+    border-color:var(--mp-blue);
+    box-shadow:0 0 0 4px rgba(0,166,226,.12);
+  }
+  .field input::placeholder{color:#bbb}
+  .field .hint{font-size:12px;color:var(--mp-text-mute)}
+
+  .income-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  }
+  .income-card{
+    padding:14px 16px;
+    border:1.5px solid var(--mp-border);
+    border-radius:10px;
+    cursor:pointer;
+    transition:all .15s;
+    background:#fff;
+    text-align:left;
+    position:relative;
+  }
+  .income-card:hover{border-color:var(--mp-blue)}
+  .income-card input{display:none}
+  .income-card.selected{
+    border-color:var(--mp-blue);
+    background:#E5F5FB;
+  }
+  .income-card.selected::after{
+    content:"✓";
+    position:absolute;top:12px;right:14px;
+    width:18px;height:18px;
+    background:var(--mp-blue);color:#fff;
+    border-radius:50%;
+    display:grid;place-items:center;
+    font-size:11px;font-weight:800;
+  }
+  .income-card .lbl{
+    font-size:14px;font-weight:600;color:var(--mp-text);
+  }
+  .income-card .sub{
+    font-size:12px;color:var(--mp-text-2);margin-top:2px;
+  }
+
+  .terms{
+    background:#F5F5F5;
+    padding:18px;border-radius:10px;
+    margin-top:8px;
+    display:flex;align-items:flex-start;gap:12px;
+  }
+  .terms input[type="checkbox"]{
+    margin-top:3px;
+    accent-color:var(--mp-blue);
+    width:16px;height:16px;
+    cursor:pointer;
+  }
+  .terms label{
+    font-size:13px;color:var(--mp-text-2);
+    line-height:1.5;cursor:pointer;
+  }
+  .terms label a{
+    color:var(--mp-blue);text-decoration:none;font-weight:600;
+  }
+  .terms label a:hover{text-decoration:underline}
+
+  .form-submit{
+    width:100%;margin-top:24px;
+    padding:18px;font-size:16px;
+    border-radius:10px;
+    justify-content:center;
+  }
+  .form-submit::after{content:"→";font-size:18px;margin-left:4px}
+
+  /* Sidebar info */
+  .info-stack{
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .info-card{
+    background:#fff;
+    border-radius:16px;
+    padding:28px;
+    box-shadow:var(--shadow-md);
+  }
+  .info-card.dark{
+    background:linear-gradient(135deg,#1A1A1A 0%,#0D0D0D 100%);
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .info-card.dark::before{
+    content:"";
+    position:absolute;
+    top:-50px;right:-50px;
+    width:200px;height:200px;
+    background:radial-gradient(circle,rgba(0,166,226,.3),transparent 60%);
+    pointer-events:none;
+  }
+  .info-card.dark h4{color:#fff}
+  .info-card.dark p{color:rgba(255,255,255,.7)}
+
+  .info-card h4{
+    font-size:16px;font-weight:700;
+    color:var(--mp-text);
+    margin-bottom:8px;
+  }
+  .info-card p{
+    font-size:14px;color:var(--mp-text-2);
+    line-height:1.6;
+  }
+  .info-icon-box{
+    width:44px;height:44px;border-radius:12px;
+    background:rgba(0,166,226,.1);color:var(--mp-blue);
+    display:grid;place-items:center;font-size:20px;
+    margin-bottom:14px;
+  }
+  .info-card.dark .info-icon-box{
+    background:rgba(0,166,226,.2);
+    color:var(--mp-blue);
+  }
+
+  .feature-list{
+    list-style:none;
+    margin-top:16px;
+  }
+  .feature-list li{
+    display:flex;align-items:center;gap:10px;
+    padding:10px 0;
+    font-size:14px;color:var(--mp-text);
+    border-bottom:1px solid var(--mp-border);
+  }
+  .feature-list li:last-child{border:0}
+  .feature-list li::before{
+    content:"";width:6px;height:6px;
+    background:var(--mp-success);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ============ COMO FUNCIONA ============ */
+  .how-section{
+    padding:80px 0;background:#fff;
+  }
+  .steps-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+    margin-top:60px;
+    position:relative;
+  }
+  .steps-grid::before{
+    content:"";position:absolute;
+    top:30px;left:15%;right:15%;
+    height:2px;
+    background:repeating-linear-gradient(90deg,
+      var(--mp-blue) 0,var(--mp-blue) 6px,
+      transparent 6px,transparent 12px);
+    z-index:0;
+  }
+  .step-item{
+    text-align:center;position:relative;z-index:1;
+  }
+  .step-circle{
+    width:60px;height:60px;
+    background:#fff;
+    border:2px solid var(--mp-blue);
+    color:var(--mp-blue);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;font-weight:800;
+    margin:0 auto 20px;
+    box-shadow:0 0 0 6px rgba(0,166,226,.1);
+  }
+  .step-item h4{
+    font-size:18px;font-weight:700;
+    color:var(--mp-text);
+    margin-bottom:8px;
+  }
+  .step-item p{
+    font-size:14px;color:var(--mp-text-2);line-height:1.6;
+  }
+
+  /* ============ FAQ ============ */
+  .faq-section{
+    padding:80px 0;background:#F9F9F9;
+  }
+  .faq-grid{
+    max-width:800px;margin:0 auto;
+  }
+  details{
+    background:#fff;
+    border-radius:12px;
+    margin-bottom:12px;
+    border:1px solid var(--mp-border);
+    overflow:hidden;
+    transition:all .2s;
+  }
+  details[open]{
+    border-color:var(--mp-blue);
+    box-shadow:var(--shadow-md);
+  }
+  summary{
+    padding:22px 28px;cursor:pointer;
+    font-weight:600;font-size:16px;
+    color:var(--mp-text);
+    display:flex;justify-content:space-between;align-items:center;
+    list-style:none;
+    transition:color .15s;
+  }
+  summary:hover{color:var(--mp-blue)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{
+    content:"";
+    width:24px;height:24px;
+    background:rgba(0,166,226,.1);
+    color:var(--mp-blue);
+    border-radius:50%;
+    display:grid;place-items:center;
+    font-size:18px;font-weight:300;
+    transition:transform .25s;
+    flex-shrink:0;
+  }
+  summary::after{content:"+";display:flex;align-items:center;justify-content:center}
+  details[open] summary::after{
+    transform:rotate(45deg);
+    background:var(--mp-blue);color:#fff;
+  }
+  details p{
+    padding:0 28px 22px;
+    color:var(--mp-text-2);
+    font-size:14px;line-height:1.7;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:#1A1A1A;color:#999;
+    padding:48px 0 32px;
+  }
+  .footer-wrap{
+    max-width:1200px;margin:0 auto;
+    padding:0 24px;
+    text-align:center;
+  }
+  .footer-logo{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-bottom:24px;
+  }
+  .footer-logo .logo-text{color:#fff}
+  .footer-disclaimer{
+    font-size:13px;color:#888;
+    max-width:680px;margin:0 auto 20px;
+    line-height:1.7;
+  }
+  .footer-disclaimer strong{color:var(--mp-yellow)}
+  .footer-links{
+    font-size:12px;color:#666;
+    padding-top:24px;border-top:1px solid #2a2a2a;
+  }
+  .footer-links a{
+    color:var(--mp-blue);text-decoration:none;
+    margin:0 12px;
+  }
+
+  /* ============ RESPONSIVE — TABLET ============ */
+  /* === TABLET PORTRAIT + LANDSCAPE: 641px–960px (2 colunas no hero) === */
+  @media (max-width:960px){
+    .nav{display:none}
+    .benefits-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-grid-wrap{grid-template-columns:1fr;gap:24px}
+    .steps-grid{grid-template-columns:1fr;gap:32px}
+    .steps-grid::before{display:none}
+  }
+  @media (max-width:960px) and (min-width:641px){
+    .hero{padding:40px 0 56px}
+    .hero-wrap{grid-template-columns:1fr 1fr;gap:24px;padding:0 20px;align-items:center}
+    .hero h1{font-size:34px;letter-spacing:-1px;margin-bottom:14px}
+    .hero-sub{font-size:15px;margin-bottom:22px}
+    .hero-badge{font-size:12px;margin-bottom:16px}
+    .btn-large{padding:14px 24px;font-size:15px}
+    .hero-trust{gap:16px;margin-top:24px;padding-top:18px}
+    .trust-item .num{font-size:20px}
+    .trust-item .lbl{font-size:11px}
+    .card-stage{min-height:260px}
+    .credit-card{
+      width:290px;height:185px;padding:20px;
+      transform:rotateY(-4deg) rotateX(2deg);
+    }
+    .card-chip{width:38px;height:30px}
+    .card-glow{width:260px;height:160px}
+  }
+
+  /* ============ RESPONSIVE — CELULAR (≤640px) ============ */
+  @media (max-width:640px){
+    /* HEADER mobile */
+    .header-wrap{padding:10px 16px}
+    .mp-logo{height:30px}
+    .nav-cta{gap:6px}
+    .btn-ghost{padding:8px 10px;font-size:13px}
+    .btn-primary{padding:9px 14px;font-size:13px}
+
+    /* HERO mobile */
+    .hero{padding:32px 0 48px}
+    .hero-wrap{grid-template-columns:1fr;padding:0 16px;gap:28px}
+    .hero-badge{font-size:11px;padding:5px 12px;margin-bottom:16px}
+    .hero h1{font-size:32px;letter-spacing:-.8px;margin-bottom:14px}
+    .hero-sub{font-size:15px;margin-bottom:24px;line-height:1.5}
+    .hero-cta-row{gap:8px;flex-direction:column;align-items:stretch}
+    .hero-cta-row .btn-primary{justify-content:center}
+    .btn-large{padding:14px 20px;font-size:15px;width:100%}
+    .btn-text{width:100%;justify-content:center;padding:12px;text-decoration:none;color:var(--mp-text);font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .hero-trust{gap:12px;margin-top:24px;padding-top:18px;flex-wrap:nowrap;justify-content:flex-start}
+    .trust-item .num{font-size:18px}
+    .trust-item .lbl{font-size:10px;white-space:nowrap}
+
+    /* CARTÃO 3D mobile */
+    .card-stage{min-height:240px}
+    .credit-card{
+      width:290px;height:184px;
+      padding:18px;
+      transform:rotateY(-3deg) rotateX(2deg);
+    }
+    .card-chip{width:36px;height:28px;margin-top:14px}
+    .chip-inner{width:24px;height:18px}
+    @keyframes float{
+      0%,100%{transform:rotateY(-4deg) rotateX(2deg) translateY(0)}
+      50%{transform:rotateY(-4deg) rotateX(2deg) translateY(-8px)}
+    }
+    .credit-card:hover{
+      transform:rotateY(-2deg) rotateX(1deg) translateY(-4px);
+    }
+    .card-glow{width:280px;height:180px}
+    .card-clean-info{bottom:20px;left:20px;right:20px}
+    .card-clean-info .name{font-size:12px}
+    .visa-logo{font-size:20px}
+    .visa-logo .gold{font-size:9px}
+
+    /* SEÇÕES gerais */
+    .container{padding:0 16px}
+    .benefits,.how-section,.faq-section,.form-section{padding:48px 0}
+    .section-head{margin-bottom:36px}
+    .section-tag{font-size:11px;letter-spacing:.8px}
+    .section-head h2{font-size:26px;letter-spacing:-.8px;line-height:1.15}
+    .section-head p{font-size:14px}
+
+    /* BENEFÍCIOS mobile */
+    .benefits-grid{grid-template-columns:1fr;gap:12px}
+    .benefit-card{padding:24px 20px;border-radius:14px}
+    .benefit-icon{width:44px;height:44px;font-size:20px;margin-bottom:14px;border-radius:10px}
+    .benefit-card h3{font-size:17px;margin-bottom:6px}
+    .benefit-text{font-size:14px}
+    .benefit-tag{font-size:10px;padding:3px 8px}
+
+    /* COMO FUNCIONA mobile */
+    .steps-grid{margin-top:36px;gap:24px}
+    .step-circle{width:48px;height:48px;font-size:20px;margin-bottom:14px;box-shadow:0 0 0 4px rgba(0,166,226,.1)}
+    .step-item h4{font-size:16px}
+    .step-item p{font-size:13px}
+
+    /* FORMULÁRIO mobile */
+    .form-card{
+      padding:24px 18px;
+      border-radius:16px;
+    }
+    .form-card h3{font-size:22px;letter-spacing:-.5px;margin-bottom:6px}
+    .form-card .desc{font-size:14px;margin-bottom:24px}
+
+    /* Stepper mobile - números compactos */
+    .stepper{padding:4px;gap:2px;margin-bottom:24px}
+    .step{
+      padding:10px 4px;
+      font-size:13px;
+      font-weight:700;
+    }
+    .step-full{display:none}
+    .step-mini{display:inline}
+
+    .form-group{margin-bottom:20px}
+    .form-group-title{font-size:11px;letter-spacing:.8px;margin-bottom:10px}
+    .form-grid{grid-template-columns:1fr;gap:14px}
+    .field label{font-size:13px}
+    .field input,.field select{
+      padding:14px;
+      font-size:16px; /* 16px previne zoom no iOS */
+      border-radius:10px;
+    }
+    .income-grid{grid-template-columns:1fr;gap:8px}
+    .income-card{padding:14px}
+    .income-card .lbl{font-size:14px}
+    .income-card .sub{font-size:12px}
+    .terms{padding:14px;gap:10px}
+    .terms label{font-size:12px;line-height:1.45}
+    .form-submit{padding:16px;font-size:15px;margin-top:20px}
+
+    /* SIDEBAR cards mobile */
+    .info-card{padding:24px 20px;border-radius:14px}
+    .info-card h4{font-size:15px}
+    .info-card p{font-size:13px}
+    .info-icon-box{width:40px;height:40px;font-size:18px;margin-bottom:12px;border-radius:10px}
+    .feature-list li{font-size:13px;padding:8px 0}
+
+    /* FAQ mobile */
+    summary{padding:18px 20px;font-size:14px}
+    summary::after{width:22px;height:22px;font-size:16px}
+    details p{padding:0 20px 18px;font-size:13px;line-height:1.6}
+
+    /* FOOTER mobile */
+    footer{padding:32px 0 24px}
+    .footer-wrap{padding:0 16px}
+    .footer-logo svg{width:130px;height:48px}
+    .footer-disclaimer{font-size:12px;line-height:1.6;margin-bottom:14px}
+    .footer-links{font-size:11px;padding-top:18px}
+    .footer-links a{margin:0 6px;display:inline-block;padding:4px 0}
+  }
+
+  /* ============ TELAS MUITO PEQUENAS (≤380px) ============ */
+  @media (max-width:380px){
+    .hero h1{font-size:28px}
+    .hero-sub{font-size:14px}
+    .credit-card{width:268px;height:170px;padding:16px}
+    .card-chip{width:34px;height:26px;margin-top:12px}
+    .chip-inner{width:22px;height:16px}
+    .visa-logo{font-size:18px}
+    .section-head h2{font-size:22px}
+    .nav-cta .btn-ghost{display:none}
+    .form-card{padding:20px 14px}
+    .form-card h3{font-size:20px}
+    .footer-links a{margin:0 4px;font-size:10px}
+    .hero-trust{gap:10px}
+    .trust-item .num{font-size:16px}
+    .trust-item .lbl{font-size:9px}
+  }
+
+  /* ============ TELAS MÍNIMAS (≤320px) ============ */
+  @media (max-width:320px){
+    .hero h1{font-size:24px;letter-spacing:-.5px}
+    .hero-sub{font-size:13px}
+    .hero-wrap{padding:0 12px}
+    .credit-card{width:252px;height:160px;padding:14px}
+    .card-chip{width:30px;height:23px;margin-top:10px}
+    .chip-inner{width:20px;height:14px}
+    .visa-logo{font-size:16px}
+    .hero-trust{gap:8px}
+    .trust-item .num{font-size:15px}
+    .trust-item .lbl{font-size:9px}
+    .btn-large{font-size:14px;padding:13px 16px}
+    .header-wrap{padding:8px 12px}
+    .mp-logo{height:26px}
+    .btn-primary{padding:8px 10px;font-size:12px}
+  }
+
+  /* ============ MODAL DE APROVAÇÃO ============ */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(8px);
+    z-index:1000;
+    display:none;
+    align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;
+    transition:opacity .3s;
+  }
+  .modal-overlay.show{
+    display:flex;
+    opacity:1;
+    animation:fadeIn .4s;
+  }
+  @keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+  }
+
+  .modal{
+    background:linear-gradient(180deg,#fff 0%,#F5FBFE 100%);
+    border-radius:24px;
+    max-width:520px;width:100%;
+    padding:48px 40px 40px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
+    animation:popIn .5s cubic-bezier(.34,1.56,.64,1);
+    overflow:hidden;
+    max-height:95vh;
+    overflow-y:auto;
+  }
+  @keyframes popIn{
+    from{opacity:0;transform:scale(.7) translateY(40px)}
+    to{opacity:1;transform:scale(1) translateY(0)}
+  }
+
+  .modal::before{
+    content:"";
+    position:absolute;
+    top:-100px;left:50%;transform:translateX(-50%);
+    width:400px;height:300px;
+    background:radial-gradient(ellipse,rgba(0,166,80,.2),transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* Confetti */
+  .confetti{
+    position:absolute;
+    width:10px;height:10px;
+    pointer-events:none;
+    animation:confettiFall 3s ease-out forwards;
+    z-index:1;
+  }
+  @keyframes confettiFall{
+    0%{transform:translateY(-100vh) rotate(0deg);opacity:1}
+    100%{transform:translateY(100vh) rotate(720deg);opacity:0}
+  }
+
+  .modal-content{position:relative;z-index:2}
+
+  /* Ícone check animado */
+  .success-circle{
+    width:96px;height:96px;
+    margin:0 auto 24px;
+    background:linear-gradient(135deg,var(--mp-success) 0%,#00C95C 100%);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    box-shadow:0 12px 30px rgba(0,166,80,.4);
+    animation:successBounce .6s cubic-bezier(.34,1.56,.64,1) .2s backwards;
+  }
+  @keyframes successBounce{
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+  }
+  .success-circle::before{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border:3px solid rgba(0,166,80,.3);
+    border-radius:50%;
+    animation:ripple 2s infinite;
+  }
+  @keyframes ripple{
+    0%{transform:scale(1);opacity:1}
+    100%{transform:scale(1.5);opacity:0}
+  }
+  .check-icon{
+    width:48px;height:48px;
+    stroke:#fff;stroke-width:4;
+    fill:none;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
+  .check-icon path{
+    stroke-dasharray:50;
+    stroke-dashoffset:50;
+    animation:drawCheck .5s ease-out .8s forwards;
+  }
+  @keyframes drawCheck{
+    to{stroke-dashoffset:0}
+  }
+
+  .modal h2{
+    font-size:30px;font-weight:800;
+    color:var(--mp-text);
+    letter-spacing:-1px;
+    margin-bottom:8px;
+    animation:slideUp .5s ease-out .4s backwards;
+  }
+  .modal h2 .accent{color:var(--mp-success)}
+  .modal-sub{
+    font-size:16px;
+    color:var(--mp-text-2);
+    margin-bottom:32px;
+    animation:slideUp .5s ease-out .5s backwards;
+  }
+  @keyframes slideUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* Card do limite */
+  .limit-card{
+    background:linear-gradient(135deg,#1A1A1A 0%,#0D0D0D 100%);
+    border-radius:16px;
+    padding:28px 24px;
+    color:#fff;
+    margin-bottom:24px;
+    position:relative;
+    overflow:hidden;
+    animation:slideUp .6s ease-out .6s backwards;
+  }
+  .limit-card::before{
+    content:"";
+    position:absolute;
+    top:-50%;right:-30%;
+    width:300px;height:300px;
+    background:radial-gradient(circle,rgba(0,166,226,.25),transparent 60%);
+    pointer-events:none;
+  }
+  .limit-card::after{
+    content:"";
+    position:absolute;
+    bottom:-50%;left:-30%;
+    width:250px;height:250px;
+    background:radial-gradient(circle,rgba(142,91,255,.2),transparent 60%);
+    pointer-events:none;
+  }
+
+  .limit-label{
+    font-size:12px;font-weight:700;
+    color:rgba(255,255,255,.6);
+    text-transform:uppercase;letter-spacing:1.5px;
+    margin-bottom:12px;
+    position:relative;z-index:1;
+  }
+
+  .limit-value{
+    font-size:48px;font-weight:800;
+    color:#fff;letter-spacing:-1.5px;
+    line-height:1;
+    margin-bottom:4px;
+    position:relative;z-index:1;
+    display:flex;align-items:baseline;justify-content:center;gap:6px;
+  }
+  .limit-value .currency{
+    font-size:24px;font-weight:600;
+    color:rgba(255,255,255,.7);
+  }
+  .limit-value .amount{
+    background:linear-gradient(135deg,var(--mp-blue) 0%,#5DBCEB 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .limit-trend{
+    font-size:13px;color:rgba(255,255,255,.7);
+    position:relative;z-index:1;
+    display:inline-flex;align-items:center;gap:6px;
+    margin-top:8px;
+  }
+  .limit-trend .badge{
+    background:rgba(0,166,80,.2);
+    color:#5EEC8B;
+    padding:3px 10px;border-radius:100px;
+    font-weight:700;font-size:11px;
+  }
+
+  /* Detalhes da aprovação */
+  .approval-details{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:24px;
+    text-align:left;
+    border:1px solid var(--mp-border);
+    animation:slideUp .5s ease-out .7s backwards;
+  }
+  .approval-row{
+    display:flex;justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    border-bottom:1px dashed #f0f0f0;
+    font-size:14px;
+  }
+  .approval-row:last-child{border:0}
+  .approval-row .lbl{
+    color:var(--mp-text-2);
+    display:flex;align-items:center;gap:8px;
+  }
+  .approval-row .val{
+    color:var(--mp-text);font-weight:700;
+  }
+  .approval-row .val.green{color:var(--mp-success)}
+  .ico-mini{
+    width:28px;height:28px;border-radius:8px;
+    background:rgba(0,166,226,.1);color:var(--mp-blue);
+    display:grid;place-items:center;font-size:14px;
+  }
+
+  .modal-actions{
+    display:flex;flex-direction:column;gap:10px;
+    animation:slideUp .5s ease-out .8s backwards;
+  }
+  .btn-modal-primary{
+    background:var(--mp-blue);color:#fff;
+    border:0;padding:16px;
+    font-size:15px;font-weight:700;
+    border-radius:10px;cursor:pointer;
+    transition:all .15s;
+    box-shadow:0 4px 14px rgba(0,166,226,.4);
+  }
+  .btn-modal-primary:hover{
+    background:var(--mp-blue-deep);
+    transform:translateY(-1px);
+  }
+  .btn-modal-secondary{
+    background:transparent;
+    border:0;color:var(--mp-text-2);
+    font-size:13px;font-weight:600;
+    cursor:pointer;padding:10px;
+  }
+  .btn-modal-secondary:hover{color:var(--mp-text)}
+
+  /* Contagem regressiva */
+  .loading-modal{
+    text-align:center;
+    padding:20px 10px 30px;
+  }
+  .countdown-logo{
+    margin-bottom:24px;
+    animation:slideUp .4s ease-out;
+  }
+  .countdown-label{
+    font-size:14px;font-weight:600;
+    color:var(--mp-text-2);
+    text-transform:uppercase;letter-spacing:1.5px;
+    margin-bottom:8px;
+    animation:slideUp .4s ease-out .1s backwards;
+  }
+  .countdown-stage{
+    display:flex;justify-content:center;
+    margin:20px 0;
+  }
+  .countdown-ring{
+    position:relative;
+    width:180px;height:180px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .countdown-ring svg{
+    position:absolute;
+    inset:0;
+  }
+  #countdownRing{
+    transition:stroke-dashoffset .8s linear;
+  }
+  .countdown-number{
+    font-size:96px;font-weight:800;
+    line-height:1;
+    background:linear-gradient(135deg,var(--mp-blue) 0%,var(--mp-purple) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    letter-spacing:-4px;
+    position:relative;z-index:1;
+  }
+  .countdown-number.tick{
+    animation:tickAnim .8s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes tickAnim{
+    0%{transform:scale(.3);opacity:0;filter:blur(8px)}
+    40%{transform:scale(1.15);opacity:1;filter:blur(0)}
+    100%{transform:scale(1);opacity:1}
+  }
+  .countdown-number.go{
+    font-size:60px;
+    letter-spacing:-2px;
+    background:linear-gradient(135deg,var(--mp-success) 0%,#00C95C 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .countdown-tip{
+    font-size:13px;color:var(--mp-text-mute);
+    margin-top:16px;
+    animation:slideUp .4s ease-out .2s backwards;
+  }
+
+  /* Taxa de envio destacada */
+  .shipping-fee{
+    background:linear-gradient(135deg,#FFF8E1 0%,#FFEFBF 100%);
+    border:2px dashed #E0A800;
+    border-radius:14px;
+    padding:16px 18px;
+    margin-bottom:20px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+    animation:slideUp .5s ease-out .9s backwards;
+  }
+  .fee-info{
+    display:flex;align-items:center;gap:12px;text-align:left;
+  }
+  .fee-icon{
+    width:38px;height:38px;
+    background:#fff;border-radius:10px;
+    display:grid;place-items:center;
+    font-size:18px;
+    box-shadow:0 2px 6px rgba(0,0,0,.06);
+    flex-shrink:0;
+  }
+  .fee-text{display:flex;flex-direction:column;gap:2px}
+  .fee-label{
+    font-size:13px;font-weight:700;
+    color:var(--mp-text);
+  }
+  .fee-sub{
+    font-size:11px;color:#8B6914;
+    font-weight:500;
+  }
+  .fee-amount{
+    font-size:20px;font-weight:800;
+    color:var(--mp-text);
+    letter-spacing:-.5px;
+    flex-shrink:0;
+  }
+
+  /* Botão PIX especial */
+  .btn-pix{
+    background:linear-gradient(135deg,#32BCAD 0%,#1FA398 100%) !important;
+    box-shadow:0 4px 14px rgba(50,188,173,.4) !important;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .btn-pix::before{
+    content:"";
+    position:absolute;
+    top:0;left:-100%;
+    width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+    animation:shimmerBtn 2.5s infinite;
+  }
+  @keyframes shimmerBtn{
+    to{left:100%}
+  }
+  .btn-pix:hover{
+    background:linear-gradient(135deg,#28A99B 0%,#188F84 100%) !important;
+    box-shadow:0 6px 20px rgba(50,188,173,.5) !important;
+  }
+
+  /* ============ TELA PIX ============ */
+  .pix-header{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:8px;
+  }
+  .pix-back{
+    background:transparent;border:0;
+    color:var(--mp-text-2);
+    font-size:13px;font-weight:600;
+    cursor:pointer;padding:6px 10px;
+    border-radius:8px;
+    transition:background .15s;
+  }
+  .pix-back:hover{background:#f0f0f0;color:var(--mp-text)}
+  .pix-logo{
+    padding:4px 10px;
+    background:rgba(50,188,173,.1);
+    border-radius:8px;
+  }
+  .pix-logo svg{display:block}
+
+  .pix-amount-card{
+    background:linear-gradient(135deg,#32BCAD 0%,#1FA398 100%);
+    color:#fff;
+    border-radius:14px;
+    padding:18px;
+    margin:20px 0;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(50,188,173,.3);
+  }
+  .pix-amount-label{
+    font-size:11px;font-weight:700;
+    color:rgba(255,255,255,.85);
+    text-transform:uppercase;letter-spacing:1.2px;
+    margin-bottom:4px;
+  }
+  .pix-amount-value{
+    font-size:36px;font-weight:800;
+    letter-spacing:-1px;
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .pix-timer{
+    font-size:12px;
+    color:rgba(255,255,255,.9);
+    background:rgba(0,0,0,.15);
+    padding:6px 12px;border-radius:100px;
+    display:inline-block;
+  }
+  .pix-timer strong{color:#fff;font-weight:700}
+
+  /* QR Code */
+  .qr-stage{
+    display:flex;justify-content:center;
+    margin:20px 0;
+  }
+  .qr-code{
+    width:200px;height:200px;
+    background:#fff;
+    padding:12px;
+    border-radius:14px;
+    box-shadow:0 8px 24px rgba(0,0,0,.1);
+    border:1px solid #f0f0f0;
+    position:relative;
+  }
+  .qr-code::before,.qr-code::after{
+    content:"";
+    position:absolute;
+    width:20px;height:20px;
+    border:3px solid #32BCAD;
+  }
+  .qr-code::before{
+    top:-2px;left:-2px;
+    border-right:0;border-bottom:0;
+    border-top-left-radius:8px;
+  }
+  .qr-code::after{
+    bottom:-2px;right:-2px;
+    border-left:0;border-top:0;
+    border-bottom-right-radius:8px;
+  }
+
+  /* PIX Copia e Cola */
+  .pix-code-section{
+    margin-bottom:20px;
+  }
+  .pix-code-label{
+    font-size:12px;font-weight:700;
+    color:var(--mp-text-2);
+    text-transform:uppercase;letter-spacing:1px;
+    margin-bottom:8px;
+    text-align:left;
+  }
+  .pix-code-box{
+    background:#F5F5F5;
+    border:1px solid var(--mp-border);
+    border-radius:8px;
+    padding:12px;
+    font-family:'Courier New',monospace;
+    font-size:11px;
+    color:var(--mp-text-2);
+    word-break:break-all;
+    text-align:left;
+    line-height:1.4;
+    max-height:60px;overflow:hidden;
+    position:relative;
+    margin-bottom:8px;
+  }
+  .pix-code-box::after{
+    content:"";
+    position:absolute;
+    bottom:0;left:0;right:0;height:30px;
+    background:linear-gradient(transparent,#F5F5F5);
+    pointer-events:none;
+  }
+  .pix-copy-btn{
+    width:100%;
+    background:#fff;
+    border:2px solid #32BCAD;
+    color:#1FA398;
+    padding:12px;
+    font-size:14px;font-weight:700;
+    border-radius:10px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:all .15s;
+  }
+  .pix-copy-btn:hover{
+    background:#32BCAD;color:#fff;
+  }
+  .pix-copy-btn.copied{
+    background:var(--mp-success);
+    border-color:var(--mp-success);
+    color:#fff;
+  }
+
+  /* Steps do PIX */
+  .pix-steps{
+    background:#F9F9F9;
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    text-align:left;
+  }
+  .pix-step-item{
+    display:flex;align-items:center;gap:10px;
+    padding:6px 0;
+    font-size:13px;color:var(--mp-text);
+  }
+  .pix-step-num{
+    width:22px;height:22px;border-radius:50%;
+    background:#32BCAD;color:#fff;
+    display:grid;place-items:center;
+    font-size:12px;font-weight:800;
+    flex-shrink:0;
+  }
+
+  .pix-security{
+    font-size:12px;color:var(--mp-text-mute);
+    padding:8px;
+    text-align:center;
+  }
+
+  /* Modal — celular */
+  @media (max-width:640px){
+    .modal-overlay{padding:12px}
+    .modal{
+      padding:32px 22px 24px;
+      border-radius:20px;
+      max-height:92vh;
+    }
+    .modal h2{font-size:22px;letter-spacing:-.5px;margin-bottom:6px}
+    .modal-sub{font-size:14px;margin-bottom:24px}
+
+    /* Success circle menor */
+    .success-circle{width:78px;height:78px;margin-bottom:18px}
+    .check-icon{width:38px;height:38px}
+
+    /* Limit card mobile */
+    .limit-card{padding:22px 18px;border-radius:14px;margin-bottom:20px}
+    .limit-label{font-size:11px;letter-spacing:1.2px;margin-bottom:8px}
+    .limit-value{font-size:42px;letter-spacing:-1px}
+    .limit-value .currency{font-size:20px}
+    .limit-trend{font-size:12px;flex-wrap:wrap;justify-content:center;gap:6px}
+    .limit-trend .badge{font-size:10px;padding:3px 8px}
+
+    /* Approval details mobile */
+    .approval-details{padding:14px 16px;margin-bottom:20px;border-radius:10px}
+    .approval-row{padding:8px 0;font-size:13px}
+    .approval-row .lbl{gap:6px;font-size:12px}
+    .approval-row .val{font-size:13px}
+    .ico-mini{width:24px;height:24px;font-size:12px;border-radius:6px}
+
+    /* Botões modal mobile */
+    .btn-modal-primary{padding:14px;font-size:14px;border-radius:10px}
+    .btn-modal-secondary{font-size:12px;padding:8px}
+
+    /* Taxa envio mobile */
+    .shipping-fee{padding:14px;flex-wrap:wrap;gap:10px}
+    .fee-info{flex:1;min-width:0}
+    .fee-label{font-size:12px}
+    .fee-sub{font-size:10px}
+    .fee-amount{font-size:18px}
+
+    /* PIX mobile */
+    .pix-amount-value{font-size:30px}
+    .qr-code{width:180px;height:180px;padding:10px}
+    .pix-code-box{font-size:10px;padding:10px}
+    .pix-copy-btn{padding:11px;font-size:13px}
+    .pix-step-item{font-size:12px;gap:8px;padding:5px 0}
+    .pix-step-num{width:20px;height:20px;font-size:11px}
+    .pix-security{font-size:11px}
+
+    /* Countdown mobile — bem menor */
+    .loading-modal{padding:10px 6px 20px}
+    .countdown-logo{margin-bottom:18px}
+    .countdown-logo svg{width:120px;height:42px}
+    .countdown-label{font-size:12px;letter-spacing:1px;margin-bottom:6px}
+    .countdown-stage{margin:14px 0}
+    .countdown-ring{width:140px;height:140px}
+    .countdown-ring svg{width:140px;height:140px}
+    .countdown-number{font-size:72px;letter-spacing:-3px}
+    .countdown-number.go{font-size:48px}
+    .countdown-tip{font-size:12px;margin-top:12px}
+  }
+
+  /* Modal — telas muito pequenas */
+  @media (max-width:380px){
+    .modal{padding:26px 18px 20px}
+    .modal h2{font-size:20px}
+    .limit-value{font-size:36px}
+    .countdown-ring{width:120px;height:120px}
+    .countdown-ring svg{width:120px;height:120px}
+    .countdown-number{font-size:60px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-wrap">
+    <a href="#" class="logo">
+      <svg class="mp-logo" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" aria-label="Mercado Pago">
+        <!-- Elipse azul claro -->
+        <ellipse cx="38" cy="40" rx="34" ry="22" fill="#00A6E2" stroke="#1A2C5C" stroke-width="2.5"/>
+        <!-- Aperto de mão estilizado -->
+        <path d="M 12 38 Q 22 32, 32 38 L 44 36 Q 52 38, 60 32 L 64 38 Q 56 46, 46 44 L 34 46 Q 22 48, 12 42 Z" fill="#fff" stroke="#1A2C5C" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Punhos -->
+        <path d="M 22 44 Q 26 50, 32 50 Q 28 52, 24 50 Z" fill="#fff" stroke="#1A2C5C" stroke-width="1.2"/>
+        <path d="M 26 48 Q 30 53, 36 52 Q 32 54, 28 52 Z" fill="#fff" stroke="#1A2C5C" stroke-width="1.2"/>
+        <!-- Textos -->
+        <text x="80" y="38" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#1A2C5C" letter-spacing="-0.5">mercado</text>
+        <text x="80" y="62" font-family="Inter, sans-serif" font-weight="700" font-size="22" fill="#00A6E2" letter-spacing="-0.5">pago</text>
+      </svg>
+    </a>
+    <nav class="nav">
+      <a href="#beneficios">Benefícios</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="btn-ghost">Entrar</button>
+      <a href="#solicitar" class="btn-primary">Peça seu cartão</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-wrap">
+    <div>
+      <span class="hero-badge">
+        <span class="dot"></span>
+        Análise imediata pelo app
+      </span>
+      <h1>Cartão de crédito <span class="accent">Mercado Pago</span>. Sem anuidade.</h1>
+      <p class="hero-sub">Parcele em até 18x sem juros no Mercado Livre, use o cartão virtual na hora e acumule pontos Meli+ em cada compra.</p>
+      <div class="hero-cta-row">
+        <a href="#solicitar" class="btn-primary btn-large">Pedir cartão grátis</a>
+        <a href="#beneficios" class="btn-text">Conhecer benefícios ↓</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="num">R$ 0</span>
+          <span class="lbl">de anuidade</span>
+        </div>
+        <div class="trust-item">
+          <span class="num">18x</span>
+          <span class="lbl">sem juros no ML</span>
+        </div>
+        <div class="trust-item">
+          <span class="num">+50 mi</span>
+          <span class="lbl">clientes Mercado Pago</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stage">
+      <div class="card-glow"></div>
+      <div class="credit-card">
+        <div class="card-top">
+          <div class="card-mp-logo">
+            <svg viewBox="0 0 120 36" width="96" height="29" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="18" cy="18" rx="16" ry="10" fill="#00A6E2"/>
+              <path d="M 6 17 Q 12 13, 18 17 L 24 16 Q 28 17, 32 14 L 34 17 Q 30 21, 24 20 L 18 21 Q 11 22, 6 19 Z" fill="#fff"/>
+              <text x="42" y="14" font-family="Inter,sans-serif" font-weight="800" font-size="13" fill="#fff" letter-spacing="-.3">mercado</text>
+              <text x="42" y="30" font-family="Inter,sans-serif" font-weight="700" font-size="13" fill="#00A6E2" letter-spacing="-.3">pago</text>
+            </svg>
+          </div>
+          <div class="card-contactless"></div>
+        </div>
+
+        <!-- Chip EMV -->
+        <div class="card-chip">
+          <div class="chip-inner"></div>
+        </div>
+
+        <div class="card-clean-info">
+          <div>
+            <div class="title">Cartão de crédito</div>
+            <div class="name">Mercado Pago</div>
+          </div>
+          <div class="visa-logo">
+            VISA
+            <span class="gold">GOLD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Vantagens</span>
+      <h2>Tudo o que você precisa, em um único cartão.</h2>
+      <p>O Cartão de Crédito Mercado Pago é integrado à sua conta e oferece controle total pelo aplicativo.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">💳</div>
+        <h3>Sem anuidade</h3>
+        <p class="benefit-text">Cartão de crédito sem anuidade, taxa de emissão ou cobranças mensais.</p>
+      </div>
+      <div class="benefit-card featured">
+        <span class="benefit-tag">Mais usado</span>
+        <div class="benefit-icon">⚡</div>
+        <h3>18x sem juros</h3>
+        <p class="benefit-text">Parcele em até 18 vezes sem acréscimos em milhares de produtos no Mercado Livre.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <h3>Cartão sem dados</h3>
+        <p class="benefit-text">O cartão físico não tem número, validade ou CVV impressos. Tudo fica seguro no app.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📱</div>
+        <h3>Cartão virtual imediato</h3>
+        <p class="benefit-text">Use para compras online e em Google Pay, Samsung Pay e Apple Pay assim que aprovado.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⭐</div>
+        <h3>Pontos Meli+</h3>
+        <p class="benefit-text">Acumule pontos em todas as compras e troque por descontos exclusivos no Mercado Livre.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>Visa Gold</h3>
+        <p class="benefit-text">Proteção de preço, garantia estendida, assistência em viagens e clube Vai de Visa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how-section" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Em 3 passos</span>
+      <h2>Você pede em poucas etapas e nós cuidamos do resto.</h2>
+      <p>Todo o processo é feito pelo aplicativo, sem burocracia ou envio de documentos físicos.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-circle">1</div>
+        <h4>Peça seu cartão de crédito</h4>
+        <p>Preencha seus dados em poucos minutos pelo app. Sem comprovantes em papel ou idas a agência.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">2</div>
+        <h4>Vamos analisar seu pedido</h4>
+        <p>Queremos te conhecer analisando seu histórico de crédito para definir a melhor opção pra você.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">3</div>
+        <h4>Aguarde nossa resposta</h4>
+        <p>Vamos te avisar por e-mail e celular se estiver tudo certo com o seu cadastro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="form-section" id="solicitar">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Peça agora</span>
+      <h2>Peça seu cartão de crédito</h2>
+      <p>Preencha seus dados e finalize em poucos minutos. Resposta direto pelo e-mail e SMS.</p>
+    </div>
+
+    <div class="form-grid-wrap">
+      <div class="form-card">
+        <h3>Solicitação do cartão</h3>
+        <p class="desc">Você precisa ter uma conta no Mercado Pago. Caso ainda não tenha, criamos uma para você.</p>
+
+        <div class="stepper">
+          <div class="step active"><span class="step-full">1. Dados</span><span class="step-mini">1</span></div>
+          <div class="step"><span class="step-full">2. Endereço</span><span class="step-mini">2</span></div>
+          <div class="step"><span class="step-full">3. Renda</span><span class="step-mini">3</span></div>
+          <div class="step"><span class="step-full">4. Pronto!</span><span class="step-mini">4</span></div>
+        </div>
+
+        <form id="formulario">
+
+          <div class="form-group">
+            <div class="form-group-title">Dados pessoais</div>
+            <div class="form-grid">
+              <div class="field full">
+                <label>Nome completo<span class="req">*</span></label>
+                <input type="text" placeholder="Como está no seu RG">
+              </div>
+              <div class="field">
+                <label>CPF<span class="req">*</span></label>
+                <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14">
+              </div>
+              <div class="field">
+                <label>Data de nascimento<span class="req">*</span></label>
+                <input type="text" id="birth" placeholder="DD/MM/AAAA" maxlength="10">
+              </div>
+              <div class="field">
+                <label>E-mail<span class="req">*</span></label>
+                <input type="email" placeholder="seu@email.com">
+              </div>
+              <div class="field">
+                <label>Celular<span class="req">*</span></label>
+                <input type="tel" id="phone" placeholder="(11) 99999-9999">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-title">Endereço</div>
+            <div class="form-grid">
+              <div class="field">
+                <label>CEP<span class="req">*</span></label>
+                <input type="text" id="cep" placeholder="00000-000" maxlength="9">
+              </div>
+              <div class="field">
+                <label>Tipo de moradia<span class="req">*</span></label>
+                <select>
+                  <option value="">Selecione</option>
+                  <option>Casa própria</option>
+                  <option>Casa alugada</option>
+                  <option>Apartamento próprio</option>
+                  <option>Apartamento alugado</option>
+                  <option>Mora com familiares</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>Endereço<span class="req">*</span></label>
+                <input type="text" placeholder="Rua, avenida, número">
+              </div>
+              <div class="field">
+                <label>Cidade<span class="req">*</span></label>
+                <input type="text">
+              </div>
+              <div class="field">
+                <label>Estado<span class="req">*</span></label>
+                <select>
+                  <option value="">UF</option>
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AP">AP</option>
+                  <option value="AM">AM</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MT">MT</option>
+                  <option value="MS">MS</option>
+                  <option value="MG">MG</option>
+                  <option value="PA">PA</option>
+                  <option value="PB">PB</option>
+                  <option value="PR">PR</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SP">SP</option>
+                  <option value="SE">SE</option>
+                  <option value="TO">TO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group-title">Renda mensal</div>
+            <div class="income-grid">
+              <label class="income-card">
+                <input type="radio" name="renda">
+                <div class="lbl">Até R$ 1.500</div>
+                <div class="sub">Ideal para começar</div>
+              </label>
+              <label class="income-card">
+                <input type="radio" name="renda">
+                <div class="lbl">R$ 1.501 a R$ 3.000</div>
+                <div class="sub">Faixa popular</div>
+              </label>
+              <label class="income-card">
+                <input type="radio" name="renda">
+                <div class="lbl">R$ 3.001 a R$ 6.000</div>
+                <div class="sub">Limite médio</div>
+              </label>
+              <label class="income-card">
+                <input type="radio" name="renda">
+                <div class="lbl">Acima de R$ 6.000</div>
+                <div class="sub">Limites maiores</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="terms">
+            <input type="checkbox" id="termos">
+            <label for="termos">
+              Ao pedir o cartão, autorizo o Mercado Pago e a Instituição Financeira do Grupo a consultarem as bases de dados necessárias para análise de crédito. Li e aceito os <a href="#">Termos e Condições</a> e a <a href="#">Política de Privacidade</a>.
+            </label>
+          </div>
+
+          <button type="button" class="btn-primary btn-large form-submit">
+            Continuar solicitação
+          </button>
+        </form>
+      </div>
+
+      <div class="info-stack">
+        <div class="info-card dark">
+          <div class="info-icon-box">⚡</div>
+          <h4>Resposta imediata</h4>
+          <p>Análise feita na hora. Você recebe a resposta direto na tela e também por e-mail e celular.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon-box">🔐</div>
+          <h4>Seus dados protegidos</h4>
+          <p>Conexão criptografada e dados tratados conforme a LGPD.</p>
+          <ul class="feature-list">
+            <li>Análise feita pelo Banco Mercado Crédito S.A.</li>
+            <li>Consulta de bureaus de crédito autorizada</li>
+            <li>Sem compartilhamento sem consentimento</li>
+            <li>Suporte 24h pelo app Mercado Pago</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon-box">💡</div>
+          <h4>Já tem conta Mercado Pago?</h4>
+          <p>A análise é mais rápida para quem já tem conta ativa. <a href="#" style="color:var(--mp-blue);font-weight:600;text-decoration:none">Entrar com minha conta →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Tire suas dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq-grid">
+      <details open>
+        <summary>O cartão tem anuidade?</summary>
+        <p>Não. O Cartão de Crédito Mercado Pago não tem anuidade ou taxa de emissão. Você não paga nada para ter ou manter o cartão.</p>
+      </details>
+      <details>
+        <summary>Como funciona a análise de crédito?</summary>
+        <p>Ao pedir o cartão, você autoriza o Mercado Pago e a Instituição Financeira do Grupo a consultarem as bases de dados necessárias para definir o melhor limite de crédito. Vamos te notificar por e-mail e celular com a resposta.</p>
+      </details>
+      <details>
+        <summary>O parcelamento em 18x no Mercado Livre tem juros?</summary>
+        <p>Não. O parcelamento em até 18 vezes é sem juros, válido para itens elegíveis no Mercado Livre. Confira os produtos participantes no momento da compra.</p>
+      </details>
+      <details>
+        <summary>Por que o cartão físico não tem números?</summary>
+        <p>Por segurança. Como o cartão físico não tem nenhum dado impresso (número, validade ou CVV), eles ficam protegidos apenas no aplicativo. Em caso de roubo ou perda, ninguém consegue acessar suas informações.</p>
+      </details>
+      <details>
+        <summary>Posso usar o cartão antes do físico chegar?</summary>
+        <p>Sim. Após a aprovação, o cartão virtual fica disponível imediatamente no app para compras online e em carteiras digitais como Google Pay, Samsung Pay e Apple Pay.</p>
+      </details>
+      <details>
+        <summary>Como recebo o cartão físico?</summary>
+        <p>Se aprovado, o cartão físico será enviado para o endereço cadastrado em sua conta. Ao chegar, você desbloqueia pelo app escaneando o QR Code no verso e criando sua senha.</p>
+      </details>
+      <details>
+        <summary>Como acumulo pontos Meli+?</summary>
+        <p>Você acumula pontos automaticamente em todas as compras feitas com o cartão. Os pontos podem ser trocados por benefícios e descontos exclusivos no Mercado Livre.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-logo">
+      <svg viewBox="0 0 220 80" width="160" height="58" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="38" cy="40" rx="34" ry="22" fill="#00A6E2" stroke="#fff" stroke-width="2"/>
+        <path d="M 12 38 Q 22 32, 32 38 L 44 36 Q 52 38, 60 32 L 64 38 Q 56 46, 46 44 L 34 46 Q 22 48, 12 42 Z" fill="#fff"/>
+        <text x="80" y="38" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#fff" letter-spacing="-0.5">mercado</text>
+        <text x="80" y="62" font-family="Inter, sans-serif" font-weight="700" font-size="22" fill="#00A6E2" letter-spacing="-0.5">pago</text>
+      </svg>
+    </div>
+    <p class="footer-disclaimer">
+      Cartão de crédito sujeito à análise de crédito. Parcelamento sem juros válido apenas para itens elegíveis no Mercado Livre.
+    </p>
+    <p class="footer-disclaimer">
+      Mercado Pago é uma plataforma da Mercado Pago.com Representações Ltda. Cartão emitido pelo Banco Mercado Crédito S.A. Bandeira Visa internacional.
+    </p>
+    <div class="footer-links">
+      <a href="#">Termos e Condições</a>
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Custo Efetivo Total</a>
+      <a href="#">Tarifas</a>
+      <a href="#">Ajuda</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL DE APROVAÇÃO -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <!-- Estado: Contagem regressiva -->
+    <div id="loadingState" class="loading-modal">
+      <div class="countdown-logo">
+        <svg viewBox="0 0 220 80" width="140" height="50" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="38" cy="40" rx="34" ry="22" fill="#00A6E2" stroke="#1A2C5C" stroke-width="2.5"/>
+          <path d="M 12 38 Q 22 32, 32 38 L 44 36 Q 52 38, 60 32 L 64 38 Q 56 46, 46 44 L 34 46 Q 22 48, 12 42 Z" fill="#fff" stroke="#1A2C5C" stroke-width="1.5"/>
+          <text x="80" y="38" font-family="Inter,sans-serif" font-weight="800" font-size="22" fill="#1A2C5C">mercado</text>
+          <text x="80" y="62" font-family="Inter,sans-serif" font-weight="700" font-size="22" fill="#00A6E2">pago</text>
+        </svg>
+      </div>
+      <div class="countdown-label">Analisando seu pedido</div>
+      <div class="countdown-stage">
+        <div class="countdown-ring">
+          <svg viewBox="0 0 180 180" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
+            <circle cx="90" cy="90" r="80" fill="none" stroke="#E5F5FB" stroke-width="6"/>
+            <circle id="countdownRing" cx="90" cy="90" r="80" fill="none"
+              stroke="url(#ringGrad)" stroke-width="6" stroke-linecap="round"
+              stroke-dasharray="502.65" stroke-dashoffset="0"
+              transform="rotate(-90 90 90)"/>
+            <defs>
+              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00A6E2"/>
+                <stop offset="100%" stop-color="#8E5BFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="countdown-number" id="countdownNumber">3</div>
+        </div>
+      </div>
+      <p class="countdown-tip">⚡ Consultando bases de crédito</p>
+    </div>
+
+    <!-- Estado: Aprovado -->
+    <div id="approvedState" class="modal-content" style="display:none">
+      <div class="success-circle">
+        <svg class="check-icon" viewBox="0 0 24 24">
+          <path d="M5 12l5 5L20 7"/>
+        </svg>
+      </div>
+
+      <h2>Tudo certo!<br><span class="accent">Você foi aprovado.</span></h2>
+      <p class="modal-sub">Seu Cartão de Crédito Mercado Pago Visa Gold já está disponível.</p>
+
+      <div class="limit-card">
+        <div class="limit-label">⚡ Limite aprovado</div>
+        <div class="limit-value">
+          <span class="currency">R$</span>
+          <span class="amount" id="limitAmount">0</span>
+        </div>
+        <div class="limit-trend">
+          <span class="badge">↗ Análise concluída</span>
+          Válido para todas as compras
+        </div>
+      </div>
+
+      <div class="approval-details">
+        <div class="approval-row">
+          <span class="lbl">
+            <span class="ico-mini">💳</span>
+            Cartão
+          </span>
+          <span class="val">Mercado Pago Visa Gold</span>
+        </div>
+        <div class="approval-row">
+          <span class="lbl">
+            <span class="ico-mini">💰</span>
+            Anuidade
+          </span>
+          <span class="val green">Grátis</span>
+        </div>
+        <div class="approval-row">
+          <span class="lbl">
+            <span class="ico-mini">📦</span>
+            Cartão físico
+          </span>
+          <span class="val">Em 5 a 10 dias úteis</span>
+        </div>
+      </div>
+
+      <div class="shipping-fee">
+        <div class="fee-info">
+          <div class="fee-icon">📦</div>
+          <div class="fee-text">
+            <div class="fee-label">Taxa de envio do cartão</div>
+            <div class="fee-sub">Pagamento único via PIX</div>
+          </div>
+        </div>
+        <div class="fee-amount">R$ 29,90</div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-modal-primary btn-pix" onclick="showPix()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:-4px"><path d="M12 2L2 12l10 10 10-10z"/><path d="M7 12l5-5 5 5-5 5z" fill="currentColor"/></svg>
+          Pagar R$ 29,90 com PIX
+        </button>
+        <button class="btn-modal-secondary" onclick="closeModal()">
+          Pagar depois
+        </button>
+      </div>
+    </div>
+
+    <!-- Estado: PIX -->
+    <div id="pixState" class="modal-content" style="display:none">
+      <div class="pix-header">
+        <button class="pix-back" onclick="backToApproved()">← Voltar</button>
+        <div class="pix-logo">
+          <svg width="60" height="22" viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="18" font-family="Inter,sans-serif" font-weight="800" font-size="20" fill="#32BCAD" letter-spacing="-1">pix</text>
+          </svg>
+        </div>
+      </div>
+
+      <h2 style="font-size:24px;margin-top:8px">Pague para receber<br>seu cartão</h2>
+      <p class="modal-sub">Escaneie o QR Code ou copie o código PIX</p>
+
+      <div class="pix-amount-card">
+        <div class="pix-amount-label">Valor a pagar</div>
+        <div class="pix-amount-value">R$ 29,90</div>
+        <div class="pix-timer">
+          ⏱️ Código expira em <strong id="pixTimer">14:59</strong>
+        </div>
+      </div>
+
+      <div class="qr-stage">
+        <div class="qr-code">
+          <!-- QR Code estilizado -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="200" height="200" fill="#fff"/>
+            <!-- Padrão de QR fake mas realista -->
+            <g fill="#000">
+              <!-- Cantos de detecção -->
+              <rect x="10" y="10" width="50" height="50" fill="none" stroke="#000" stroke-width="6"/>
+              <rect x="20" y="20" width="30" height="30"/>
+              <rect x="140" y="10" width="50" height="50" fill="none" stroke="#000" stroke-width="6"/>
+              <rect x="150" y="20" width="30" height="30"/>
+              <rect x="10" y="140" width="50" height="50" fill="none" stroke="#000" stroke-width="6"/>
+              <rect x="20" y="150" width="30" height="30"/>
+              <!-- Pontos aleatórios estilo QR -->
+              <rect x="70" y="15" width="8" height="8"/><rect x="85" y="15" width="8" height="8"/>
+              <rect x="100" y="15" width="8" height="8"/><rect x="120" y="15" width="8" height="8"/>
+              <rect x="70" y="30" width="8" height="8"/><rect x="90" y="30" width="8" height="8"/>
+              <rect x="115" y="30" width="8" height="8"/><rect x="130" y="30" width="8" height="8"/>
+              <rect x="75" y="45" width="8" height="8"/><rect x="100" y="45" width="8" height="8"/>
+              <rect x="125" y="45" width="8" height="8"/>
+              <rect x="15" y="70" width="8" height="8"/><rect x="35" y="70" width="8" height="8"/>
+              <rect x="55" y="70" width="8" height="8"/><rect x="70" y="70" width="8" height="8"/>
+              <rect x="90" y="70" width="8" height="8"/><rect x="110" y="70" width="8" height="8"/>
+              <rect x="125" y="70" width="8" height="8"/><rect x="145" y="70" width="8" height="8"/>
+              <rect x="165" y="70" width="8" height="8"/><rect x="180" y="70" width="8" height="8"/>
+              <rect x="25" y="85" width="8" height="8"/><rect x="50" y="85" width="8" height="8"/>
+              <rect x="65" y="85" width="8" height="8"/><rect x="85" y="85" width="8" height="8"/>
+              <rect x="105" y="85" width="8" height="8"/><rect x="135" y="85" width="8" height="8"/>
+              <rect x="160" y="85" width="8" height="8"/><rect x="180" y="85" width="8" height="8"/>
+              <rect x="15" y="100" width="8" height="8"/><rect x="40" y="100" width="8" height="8"/>
+              <rect x="70" y="100" width="8" height="8"/><rect x="95" y="100" width="8" height="8"/>
+              <rect x="120" y="100" width="8" height="8"/><rect x="150" y="100" width="8" height="8"/>
+              <rect x="170" y="100" width="8" height="8"/>
+              <rect x="30" y="115" width="8" height="8"/><rect x="55" y="115" width="8" height="8"/>
+              <rect x="80" y="115" width="8" height="8"/><rect x="100" y="115" width="8" height="8"/>
+              <rect x="125" y="115" width="8" height="8"/><rect x="145" y="115" width="8" height="8"/>
+              <rect x="175" y="115" width="8" height="8"/>
+              <rect x="20" y="130" width="8" height="8"/><rect x="50" y="130" width="8" height="8"/>
+              <rect x="75" y="130" width="8" height="8"/><rect x="100" y="130" width="8" height="8"/>
+              <rect x="130" y="130" width="8" height="8"/><rect x="160" y="130" width="8" height="8"/>
+              <rect x="180" y="130" width="8" height="8"/>
+              <rect x="75" y="145" width="8" height="8"/><rect x="95" y="145" width="8" height="8"/>
+              <rect x="115" y="145" width="8" height="8"/><rect x="140" y="145" width="8" height="8"/>
+              <rect x="165" y="145" width="8" height="8"/>
+              <rect x="80" y="160" width="8" height="8"/><rect x="105" y="160" width="8" height="8"/>
+              <rect x="125" y="160" width="8" height="8"/><rect x="150" y="160" width="8" height="8"/>
+              <rect x="170" y="160" width="8" height="8"/><rect x="185" y="160" width="8" height="8"/>
+              <rect x="70" y="175" width="8" height="8"/><rect x="95" y="175" width="8" height="8"/>
+              <rect x="115" y="175" width="8" height="8"/><rect x="135" y="175" width="8" height="8"/>
+              <rect x="160" y="175" width="8" height="8"/><rect x="180" y="175" width="8" height="8"/>
+            </g>
+            <!-- Logo do Mercado Pago no centro -->
+            <circle cx="100" cy="100" r="22" fill="#fff" stroke="#fff" stroke-width="6"/>
+            <circle cx="100" cy="100" r="18" fill="#00A6E2"/>
+            <path d="M 86 100 Q 92 96, 98 100 L 105 99 Q 110 100, 114 97 L 115 100 Q 111 104, 105 103 L 98 104 Q 92 105, 86 102 Z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pix-code-section">
+        <div class="pix-code-label">PIX Copia e Cola</div>
+        <div class="pix-code-box">
+          <code id="pixCode">00020126580014BR.GOV.BCB.PIX0136mp-cartao-7000-envio@mercadopago5204000053039865802BR5925MERCADO PAGO INSTITUICAO6009SAO PAULO62290525MPCARD2990ENVIO20250063044A8B</code>
+        </div>
+        <button class="pix-copy-btn" onclick="copyPix(this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copiar código PIX
+        </button>
+      </div>
+
+      <div class="pix-steps">
+        <div class="pix-step-item">
+          <span class="pix-step-num">1</span>
+          <span>Abra o app do seu banco</span>
+        </div>
+        <div class="pix-step-item">
+          <span class="pix-step-num">2</span>
+          <span>Escolha pagar com PIX e escaneie o QR ou cole o código</span>
+        </div>
+        <div class="pix-step-item">
+          <span class="pix-step-num">3</span>
+          <span>Confirme — seu cartão será enviado imediatamente</span>
+        </div>
+      </div>
+
+      <div class="pix-security">
+        🔒 Pagamento processado pelo Mercado Pago
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Income card selection
+  document.querySelectorAll('.income-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      document.querySelectorAll('.income-card').forEach(c=>c.classList.remove('selected'));
+      card.classList.add('selected');
+      const inp=card.querySelector('input');
+      if(inp)inp.checked=true;
+    });
+  });
+
+  // CPF mask
+  document.getElementById('cpf').addEventListener('input',e=>{
+    let v=e.target.value.replace(/\D/g,'');
+    v=v.replace(/(\d{3})(\d)/,'$1.$2');
+    v=v.replace(/(\d{3})(\d)/,'$1.$2');
+    v=v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+    e.target.value=v;
+  });
+
+  // Phone mask
+  document.getElementById('phone').addEventListener('input',e=>{
+    let v=e.target.value.replace(/\D/g,'');
+    v=v.replace(/(\d{2})(\d)/,'($1) $2');
+    v=v.replace(/(\d{5})(\d)/,'$1-$2');
+    e.target.value=v.slice(0,15);
+  });
+
+  // CEP mask
+  document.getElementById('cep').addEventListener('input',e=>{
+    let v=e.target.value.replace(/\D/g,'');
+    v=v.replace(/(\d{5})(\d)/,'$1-$2');
+    e.target.value=v.slice(0,9);
+  });
+
+  // Birth mask
+  document.getElementById('birth').addEventListener('input',e=>{
+    let v=e.target.value.replace(/\D/g,'');
+    v=v.replace(/(\d{2})(\d)/,'$1/$2');
+    v=v.replace(/(\d{2})(\d)/,'$1/$2');
+    e.target.value=v.slice(0,10);
+  });
+
+  // Form submit -> abre modal de análise + aprovação
+  function handleSubmit(e){
+    if(e){e.preventDefault();e.stopPropagation();}
+    // Sempre abrir o modal, sem validação bloqueante
+    openModal();
+    return false;
+  }
+
+  document.getElementById('formulario').addEventListener('submit',handleSubmit);
+  document.querySelector('.form-submit').addEventListener('click',handleSubmit);
+
+  function openModal(){
+    const overlay=document.getElementById('modalOverlay');
+    const loadingState=document.getElementById('loadingState');
+    const approvedState=document.getElementById('approvedState');
+    const pixState=document.getElementById('pixState');
+
+    // Reset
+    loadingState.style.display='block';
+    approvedState.style.display='none';
+    if(pixState)pixState.style.display='none';
+
+    overlay.classList.add('show');
+    document.body.style.overflow='hidden';
+
+    // Contagem regressiva 3 → 2 → 1 → GO
+    const numEl=document.getElementById('countdownNumber');
+    const ring=document.getElementById('countdownRing');
+    const circumference=502.65; // 2 * PI * 80
+
+    let count=3;
+
+    // Iniciar anel preenchendo
+    ring.style.strokeDashoffset=circumference;
+    setTimeout(()=>{
+      ring.style.strokeDashoffset=0;
+    },50);
+
+    // Função para mostrar número com animação
+    function showNumber(n,isLast=false){
+      numEl.classList.remove('tick','go');
+      void numEl.offsetWidth; // força reflow para reiniciar animação
+      if(isLast){
+        numEl.textContent='✓';
+        numEl.classList.add('go','tick');
+      }else{
+        numEl.textContent=n;
+        numEl.classList.add('tick');
+      }
+    }
+
+    showNumber(3);
+
+    setTimeout(()=>showNumber(2),900);
+    setTimeout(()=>showNumber(1),1800);
+    setTimeout(()=>{
+      numEl.textContent='✓';
+      numEl.classList.add('go','tick');
+    },2700);
+
+    // Mostrar tela de aprovação
+    setTimeout(()=>{
+      loadingState.style.display='none';
+      approvedState.style.display='block';
+      animateLimitCounter();
+      launchConfetti();
+    },3500);
+  }
+
+  function closeModal(){
+    const overlay=document.getElementById('modalOverlay');
+    overlay.classList.remove('show');
+    document.body.style.overflow='';
+    // Para o timer se estiver rodando
+    if(window.pixTimerInterval){
+      clearInterval(window.pixTimerInterval);
+      window.pixTimerInterval=null;
+    }
+  }
+
+  // Mostrar tela PIX
+  function showPix(){
+    document.getElementById('approvedState').style.display='none';
+    document.getElementById('pixState').style.display='block';
+    document.getElementById('modal').scrollTop=0;
+    startPixTimer();
+  }
+
+  // Voltar pra tela de aprovação
+  function backToApproved(){
+    document.getElementById('pixState').style.display='none';
+    document.getElementById('approvedState').style.display='block';
+    document.getElementById('modal').scrollTop=0;
+    if(window.pixTimerInterval){
+      clearInterval(window.pixTimerInterval);
+      window.pixTimerInterval=null;
+    }
+  }
+
+  // Timer regressivo do PIX (15 minutos)
+  function startPixTimer(){
+    if(window.pixTimerInterval)clearInterval(window.pixTimerInterval);
+    let seconds=15*60-1; // 14:59
+    const timerEl=document.getElementById('pixTimer');
+    function tick(){
+      const m=Math.floor(seconds/60);
+      const s=seconds%60;
+      timerEl.textContent=
+        String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+      seconds--;
+      if(seconds<0){
+        clearInterval(window.pixTimerInterval);
+        timerEl.textContent='Expirado';
+      }
+    }
+    tick();
+    window.pixTimerInterval=setInterval(tick,1000);
+  }
+
+  // Copiar código PIX
+  function copyPix(btn){
+    const code=document.getElementById('pixCode').textContent;
+    const originalHTML=btn.innerHTML;
+
+    // Tenta usar clipboard API moderno, com fallback
+    const copyText=()=>{
+      btn.classList.add('copied');
+      btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Código copiado!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        btn.innerHTML=originalHTML;
+      },2500);
+    };
+
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(code).then(copyText).catch(()=>{
+        // Fallback manual
+        const ta=document.createElement('textarea');
+        ta.value=code;ta.style.position='fixed';ta.style.opacity='0';
+        document.body.appendChild(ta);ta.select();
+        try{document.execCommand('copy');copyText();}
+        catch(e){alert('Código: '+code);}
+        document.body.removeChild(ta);
+      });
+    }else{
+      // Fallback para navegadores antigos / iOS sem HTTPS
+      const ta=document.createElement('textarea');
+      ta.value=code;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');copyText();}
+      catch(e){alert('Código: '+code);}
+      document.body.removeChild(ta);
+    }
+  }
+
+  // Fechar ao clicar fora
+  document.getElementById('modalOverlay').addEventListener('click',e=>{
+    if(e.target.id==='modalOverlay')closeModal();
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')closeModal();
+  });
+
+  // Animação contador do limite (0 -> 7000)
+  function animateLimitCounter(){
+    const el=document.getElementById('limitAmount');
+    const target=7000;
+    const duration=1500;
+    const startTime=performance.now();
+
+    function update(now){
+      const elapsed=now-startTime;
+      const progress=Math.min(elapsed/duration,1);
+      // easing out cubic
+      const eased=1-Math.pow(1-progress,3);
+      const value=Math.floor(target*eased);
+      el.textContent=value.toLocaleString('pt-BR');
+      if(progress<1)requestAnimationFrame(update);
+      else el.textContent='7.000';
+    }
+    requestAnimationFrame(update);
+  }
+
+  // Confetti 🎉
+  function launchConfetti(){
+    const colors=['#00A6E2','#FFE600','#8E5BFF','#00A650','#F23D4F'];
+    const modal=document.getElementById('modal');
+    for(let i=0;i<40;i++){
+      const c=document.createElement('div');
+      c.className='confetti';
+      c.style.left=Math.random()*100+'%';
+      c.style.top='-20px';
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDelay=(Math.random()*0.5)+'s';
+      c.style.animationDuration=(2+Math.random()*2)+'s';
+      c.style.width=(6+Math.random()*8)+'px';
+      c.style.height=c.style.width;
+      if(Math.random()>0.5)c.style.borderRadius='50%';
+      else c.style.transform='rotate('+Math.random()*360+'deg)';
+      modal.appendChild(c);
+      setTimeout(()=>c.remove(),4000);
+    }
+  }
+
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length>1){
+        e.preventDefault();
+        const el=document.querySelector(id);
+        if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
